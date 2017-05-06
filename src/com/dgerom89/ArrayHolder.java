@@ -13,11 +13,10 @@ public class ArrayHolder {
     Scanner input = new Scanner(System.in);
 
 
-    ArrayHolder(int size) {
-
-        array = new int[size];
-        fillArray();
-    }
+    ArrayHolder(int size1) {
+            array = new int[size1];
+            fillArray();
+          }
 
     int[] getArray() {
         return array;
@@ -26,9 +25,11 @@ public class ArrayHolder {
     void fillArray() {
         System.out.println("Enter element of Array: ");
         for (int j = 0; j < array.length; j++) {
-            array[j] = input.nextInt();
+//            array[j] = input.nextInt();
+            array[j] = ConsoleHelper.getIntegerFromScanner(input, "error", false);
             System.out.println(array[j]);
         }
+
     }
 
 
@@ -64,7 +65,7 @@ public class ArrayHolder {
             if (array[i] == element) {
                 if (inArray)
                     string += ", ";
-                string += i + 1;
+                string += (i+1);
                 inArray = true;
 
             }

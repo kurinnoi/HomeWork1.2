@@ -12,7 +12,7 @@ public class ConsoleHelper {
     public void start() {
         String possibilities;
         getInstruction();
-        size = getIntegerFromScanner(in, getErrorMessage());
+        size = getIntegerFromScanner(in, getErrorMessage(), true);
         ArrayHolder arrayHolder = new ArrayHolder(size);
         System.out.println("Your initial array is: " + Arrays.toString(arrayHolder.getArray()));
         do {
@@ -22,7 +22,7 @@ public class ConsoleHelper {
                 case "1": {
                     System.out.print("What element do you want to find: ");
                     int element = in.nextInt();
-                    System.out.println("The element " + element + " is(are) found on " + arrayHolder.findElement(element) + " positions of array/");
+                    System.out.println("The element " + element + " is(are) found on " + arrayHolder.findElement(element) + " positions of array.");
                     break;
                 }
                 case "2": {
@@ -62,19 +62,32 @@ public class ConsoleHelper {
     private void getChoose() {
         System.out.println("Do you want:");
         System.out.println("1) to find an element?");
-        System.out.println("2) to sort the array in ascending order?;");
+        System.out.println("2) to sort the array in ascending order?");
         System.out.println("3) to sort the array in descending order?");
         System.out.println("4) to quit the program?");
+
     }
 
+    public static int getIntegerFromScanner(Scanner sc, String errorMessage, boolean bull) {
+        int i;
 
-    private int getIntegerFromScanner(Scanner sc, String errorMessage) {
-        while (!sc.hasNextInt()) {
-            System.err.println(errorMessage);
+        try {
+            i = sc.nextInt();
+            if (bull) {
+                if (i > 0) {
+
+                } else {
+                    System.out.println(errorMessage);
+                    i = getIntegerFromScanner(sc, errorMessage, bull);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(errorMessage);
             sc.next();
+            i = getIntegerFromScanner(sc, errorMessage, bull);
         }
-        return sc.nextInt();
+        return i;
     }
-
 }
+
 
