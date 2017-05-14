@@ -68,23 +68,23 @@ public class ConsoleHelper {
 
     }
 
-    public static int getIntegerFromScanner(Scanner sc, String errorMessage, boolean bull) {
+    public static int getIntegerFromScanner(Scanner sc, String errorMessage, boolean LowZero) {     //переименовал Bull
         int i;
 
         try {
             i = sc.nextInt();
-            if (bull) {
+            if (LowZero) {
                 if (i > 0) {
 
                 } else {
                     System.out.println(errorMessage);
-                    i = getIntegerFromScanner(sc, errorMessage, bull);
+                    i = getIntegerFromScanner(sc, errorMessage, LowZero);
                 }
             }
         } catch (Exception e) {
             System.out.println(errorMessage);
             sc.next();
-            i = getIntegerFromScanner(sc, errorMessage, bull);
+            i = getIntegerFromScanner(sc, errorMessage, LowZero);
         }
         return i;
     }
