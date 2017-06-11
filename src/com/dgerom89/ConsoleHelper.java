@@ -71,6 +71,10 @@ public class ConsoleHelper {
     public static int getIntegerFromScanner(Scanner sc, String errorMessage, boolean LowZero) {     //переименовал Bull
         int i;
 
+        /*
+        * Для блока исключений
+        */
+
         try {
             i = sc.nextInt();
             if (LowZero) {
